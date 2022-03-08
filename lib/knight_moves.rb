@@ -16,5 +16,6 @@ class Game_board
 
   def char(coordinate, coordinate2)
     print "♞" if knight.placement == [coordinate, coordinate2]
+    print " " if knight.placement != [coordinate, coordinate2]
   end
 end
