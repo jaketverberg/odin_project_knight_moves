@@ -1,5 +1,10 @@
 class Knight
 
+  def initialize(placement, coordinate)
+    @placement = placement
+    @coordinate = coordinate
+  end
+
   MOVES = [[1, 2], [1, -2], [-1, 2], [-1, -2], [2, 1], [-2, 1], [2, -1], [-2, -1]]
 end
 
