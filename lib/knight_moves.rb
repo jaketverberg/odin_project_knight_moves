@@ -12,14 +12,14 @@ class Knight
   end
 
   def node_tree
-    MOVES.map( |m| [@position[0], @position[1]] )
-         .keepif { |e| Kight.valid?(e) }
+    MOVES.map{ |m| [@position[0] + m[0], @position[1] + m[1]] }
+         .keep_if { |e| valid?(e) }
          .reject { |e| @@history.include?(e) }
          .map { |e| Knight.new(e, self)  }
   end
 
   def valid?(position)
-    position[0].between?(0, 7) && position[1].between?(0, 7)
+    position[0].between?(1, 8) && position[1].between?(1, 8)
   end
 end
 
@@ -33,10 +33,10 @@ def knight_moves(start, end_position)
   knight = Knight.new(start, nil)
   until knight.position == end_position
     knight.node_tree.each { |child| queue.push(child) }
-    knight.position = queue.shift
+    knight = queue.shift
   end
 
   display_parent(knight)
 end
 
-knight_moves([0, 0], [7, 7])
+knight_moves([1, 1], [7, 5])
